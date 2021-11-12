@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/MafoloEmmanuel/The-fruit-basket.svg?branch=master)](https://app.travis-ci.com/MafoloEmmanuel/The-fruit-basket)
+
 Fruit_Basket
 Create a Factory Function to manage fruit baskets.
 
