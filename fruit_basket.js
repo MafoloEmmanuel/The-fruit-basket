@@ -43,7 +43,8 @@ let updateNumberOfFruits = async(type)=>{
 
 //  Show the total price for a given fruit basket.
 let basketTotalPrice =async(type)=>{
-var result = await pool.query('select fruit_name, sum(price) from fruit_basket',[type]);
+    var sql = 'select fruit_name, sum(price) as fruit_total from fruit_basket where fruit_name=$1 group by fruit_name';
+var result = await pool.query(sql,[type]);
 return result.rows
 }
 let countFruits = async(type)=>{
