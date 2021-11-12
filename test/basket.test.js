@@ -28,26 +28,25 @@ await pool.query('delete from fruit_basket');
 let fruity = FruitBasket(pool)
 
     it('show fruits', async()=>{
-await fruity.insertFruitName('Apple');
-await fruity.insertFruitName('Apple');
-await fruity.insertFruitName('Banana');
-await fruity.insertFruitName('Mango');
+await fruity.setFruitBasket('Apple',2.50);
+await fruity.setFruitBasket('Apple',2.50);
+await fruity.setFruitBasket('Banana',1.50);
+await fruity.setFruitBasket('Mango',3.50);
 
 
-assert.equal(1, await fruity.getFruitList().rows.length)
+assert.equal(1, await fruity.getFruitBasket('Apple').rows.length)
     })
 it('count fruits',async()=>{
-    await fruity.insertFruitName('Apple');
-    await fruity.insertFruitName('Apple');
-    await fruity.insertFruitName('Banana');
-    await fruity.insertFruitName('Mango');
+    await fruity.setFruitBasket('Apple');
+    await fruity.setFruitBasket('Apple');
+    await fruity.setFruitBasket('Banana');
+    await fruity.setFruitBasket('Mango');
 
     assert.equal(2, await fruity.countFruits('Apple'));
     assert.equal(1, await fruity.countFruits('Banana'));
 
 })
     after(()=>{
-        console.log('@@@@@@@@@@@@@@@@@')
         pool.end()
     })
 })
