@@ -30,7 +30,6 @@ describe('Fruit basket ', () => {
 describe('Setting fruit baskets', ()=>{
     it('Should set basket of Apples ',async()=>{
         await fruity.setFruitBasket('Apples',2.50,7);
-     
         assert.deepEqual([
          {
            fruit_name: 'Apples',
@@ -64,6 +63,19 @@ describe('Setting fruit baskets', ()=>{
           }
         ], await fruity.getFruitBasket('Oranges'));
       });
+        it('try to set three baskets  of Apples ',async()=>{
+            await fruity.setFruitBasket('Apples',2.50,7);
+            await fruity.setFruitBasket('Apples',2.50,7);
+            await fruity.setFruitBasket('Apples',2.50,7);
+         
+            assert.deepEqual([
+             {
+               fruit_name: 'Apples',
+               price: '2.50',
+               quantity: 21
+             }
+           ], await fruity.getFruitBasket('Apples'));
+         });
      
 });
 describe('Update the number of fruits in a given basket',()=>{
