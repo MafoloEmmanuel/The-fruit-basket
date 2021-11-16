@@ -16,7 +16,6 @@ const pool = new Pool({
 pool.on('connect', () => {
   //  console.log('connection has started')
 });
-const mocha = require('mocha');
 const assert = require('assert');
 const { describe, it } = require('mocha');
 
