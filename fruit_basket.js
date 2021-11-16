@@ -3,15 +3,9 @@ module.exports = function FruitBasket(pool) {
 
     // insert fruit type, price and number of fruits
     let setFruitBasket = async (type, price, qty) => {
-        var checkBasket = await pool.query('select fruit_name from fruit_basket where fruit_name=$1',[type]);
-        //console.log(checkBasket.rows);
-        if(checkBasket.rows.length <1){
             var result = await pool.query('insert into fruit_basket (fruit_name,price,quantity) values ($1,$2,$3)', [type, price, qty]);
-         
             return result.rows
-        } else {
-            return await updateNumberOfFruits(type,qty)
-        }
+        
     }
 
     //Find all the fruit baskets for a given fruit type. 
