@@ -112,7 +112,7 @@ describe('Show the total price for a given fruit basket',()=>{
         assert.deepEqual( [
             {
               fruit_name: 'Apples',
-              fruit_total: 17.50
+              basket_total: 17.50
             }
           ], await fruity.basketTotalPrice('Apples'));
         
@@ -123,7 +123,7 @@ it('Should show a total for Bananas basket', async()=>{
     assert.deepEqual( [
         {
           fruit_name: 'Bananas',
-          fruit_total: 15.00
+          basket_total: 15.00
         }
       ], await fruity.basketTotalPrice('Bananas'));
     
@@ -133,14 +133,47 @@ it('Should show a total for Oranges basket', async()=>{
     assert.deepEqual( [
         {
           fruit_name: 'Oranges',
-          fruit_total: 27
+          basket_total: 27.00
         }
       ], await fruity.basketTotalPrice('Oranges'));
     
 });
 
 });
+describe('Show the sum of total price for a given fruit basket',()=>{
+  it('Should show the sum of total for Apples basket', async()=>{
+      await fruity.setFruitBasket('Apples',2.50,7);
+      assert.deepEqual( [
+          {
+            fruit_name: 'Apples',
+            fruit_total: 17.50
+          }
+        ], await fruity.SumBasketTotalPrice('Apples'));
+      
+  });
 
+it('Should show the sum total for Bananas basket', async()=>{
+  await fruity.setFruitBasket('Bananas',1.50,10);
+  assert.deepEqual( [
+      {
+        fruit_name: 'Bananas',
+        fruit_total: 15.00
+      }
+    ], await fruity.SumBasketTotalPrice('Bananas'));
+  
+});
+it('Should show the sum total for Oranges basket', async()=>{
+  await fruity.setFruitBasket('Oranges',3.00,9);
+  assert.deepEqual( [
+      {
+        fruit_name: 'Oranges',
+        fruit_total: 27.00
+      }
+    ], await fruity.SumBasketTotalPrice('Oranges'));
+  
+});
+
+});
     after(() => {
         pool.end()
     })
